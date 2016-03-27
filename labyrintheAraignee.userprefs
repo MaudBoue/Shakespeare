@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/gameManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/gameManager.cs" Line="17" Column="5" />
+      <File FileName="Assets/zoneAraignee.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/move3.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/cameraFollowRotate.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/move2.cs" Line="1" Column="1" />
+      <File FileName="../../../../unity projects/10 briques test 2D/Assets/Scripts/Tirer.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
