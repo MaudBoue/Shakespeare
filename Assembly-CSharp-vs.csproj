@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{7B7338FB-0BFE-724F-9EDD-FE54B99DB03E}</ProjectGuid>
+	<ProjectGuid>{A01DBBB4-9F1A-8686-6215-BEB3A76FAEAB}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -46,13 +46,18 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Switch.cs" />
+     <Compile Include="Assets\Scripts\araignee.cs" />
      <Compile Include="Assets\Scripts\cameraFollow.cs" />
      <Compile Include="Assets\Scripts\cameraFollowRotate.cs" />
      <Compile Include="Assets\Scripts\gameManager.cs" />
+     <Compile Include="Assets\Scripts\gameManager2.cs" />
      <Compile Include="Assets\Scripts\move2.cs" />
      <Compile Include="Assets\Scripts\move3.cs" />
-     <Compile Include="Assets\gameManager2.cs" />
-     <Compile Include="Assets\zoneAraignee.cs" />
+     <Compile Include="Assets\Scripts\soundManager.cs" />
+     <Compile Include="Assets\Scripts\zoneAraignee.cs" />
+     <Compile Include="Assets\Scripts\zoneAraigneeAppear.cs" />
+     <Compile Include="Assets\gestionAraignees.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

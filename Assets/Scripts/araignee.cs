@@ -14,6 +14,8 @@ public class araignee : MonoBehaviour {
 
 	//pour confrontation
 	private bool estApparu = false;
+	private bool regarde;
+	private float coefMonteJauge2 = 0.5f;
 
 
 	// Use this for initialization
@@ -40,15 +42,51 @@ public class araignee : MonoBehaviour {
 			}
 		}
 
+		//Quand Araignée
+		if (estApparu) {
+			regarde = Input.GetKey(KeyCode.V);
+			if (regarde && joueurEstDansZone ) {
+				jauge += coefMonteJauge2;
+				if (jauge >= tempsAppear) aEuAraigne();
+				jaugeSprite.localScale = new Vector3 (jauge*6,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
+			}
 
+			if (jauge > 0 && (!regarde || !joueurEstDansZone)) {
+			jauge -= coefMonteJauge2 / 2;
+			jaugeSprite.localScale = new Vector3 (jauge*6,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
+			}
+		}
 
 	}
+
+
+	// vistoire contre araigée si collision
+	/*void OnCollisionEnter(Collision coll){
+		if (coll.gameObject.tag == ("Player") && estApparu) {
+			aEuAraigne();
+		}
+	}*/
+
 
 	private void transformationEnAraignee(){
 		Debug.Log ("Apparu");
 		estApparu = true;
 		anim.SetBool ("apparu", true);
-		transform.GetComponentInChildren<zoneAraigneeAppear> ().gameObject.SetActive (false);
-		jaugeSprite.gameObject.SetActive (false);
+		jauge = 0;
+		ombresApparaissent ();
+		//transform.GetComponentInChildren<zoneAraigneeAppear> ().gameObject.SetActive (false);
+		//jaugeSprite.gameObject.SetActive (false);
+	}
+
+	private void ombresApparaissent(){
+	}
+
+	private void aEuAraigne(){
+		Debug.Log ("araignee Eue");
+		faitApparaitreBoutDeToile ();
+		GameObject.Destroy (this.gameObject);
+	}
+	
+	private void faitApparaitreBoutDeToile (){
 	}
 }
