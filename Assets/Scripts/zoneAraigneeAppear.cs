@@ -18,6 +18,7 @@ public class zoneAraigneeAppear : MonoBehaviour {
 	void OnTriggerEnter(Collider coll){
 		if (coll.gameObject.tag == ("Player")) {
 			parent.joueurEstDansZone = true;
+			parent.checkOmbres();
 		}
 	}
 

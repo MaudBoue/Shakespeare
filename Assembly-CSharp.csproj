@@ -46,18 +46,21 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Ombre.cs" />
      <Compile Include="Assets\Scripts\Switch.cs" />
      <Compile Include="Assets\Scripts\araignee.cs" />
      <Compile Include="Assets\Scripts\cameraFollow.cs" />
      <Compile Include="Assets\Scripts\cameraFollowRotate.cs" />
      <Compile Include="Assets\Scripts\gameManager.cs" />
      <Compile Include="Assets\Scripts\gameManager2.cs" />
+     <Compile Include="Assets\Scripts\gameManagerNew.cs" />
+     <Compile Include="Assets\Scripts\gestionAraignees.cs" />
      <Compile Include="Assets\Scripts\move2.cs" />
      <Compile Include="Assets\Scripts\move3.cs" />
+     <Compile Include="Assets\Scripts\patternOmbres.cs" />
      <Compile Include="Assets\Scripts\soundManager.cs" />
      <Compile Include="Assets\Scripts\zoneAraignee.cs" />
      <Compile Include="Assets\Scripts\zoneAraigneeAppear.cs" />
-     <Compile Include="Assets\gestionAraignees.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

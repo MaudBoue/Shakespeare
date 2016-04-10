@@ -16,6 +16,7 @@ public class araignee : MonoBehaviour {
 	private bool estApparu = false;
 	private bool regarde;
 	private float coefMonteJauge2 = 0.5f;
+	public patternOmbres patternO;
 
 
 	// Use this for initialization
@@ -23,6 +24,9 @@ public class araignee : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		jaugeSprite = transform.FindChild ("Jauge");
 		jaugeSprite.localScale = new Vector3 (0,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
+
+		patternO = GetComponent<patternOmbres> ();
+		//patternO.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -31,7 +35,7 @@ public class araignee : MonoBehaviour {
 		// Quand forme floue
 		if (!estApparu) {
 			if (joueurEstDansZone) {
-				jauge += coefMonteJauge;
+				jauge += coefMonteJauge*1.5f;
 				if (jauge >= tempsAppear) transformationEnAraignee();
 				jaugeSprite.localScale = new Vector3 (jauge*6,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
 			}
@@ -55,6 +59,12 @@ public class araignee : MonoBehaviour {
 			jauge -= coefMonteJauge2 / 2;
 			jaugeSprite.localScale = new Vector3 (jauge*6,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
 			}
+
+			// pour apparition / disparition ombres
+			/*if ( patternO.enable == true && !regarde && !joueurEstDansZone){
+			
+			}*/
+
 		}
 
 	}
@@ -79,6 +89,8 @@ public class araignee : MonoBehaviour {
 	}
 
 	private void ombresApparaissent(){
+		patternO.enabled = true;
+		patternO.init ();
 	}
 
 	private void aEuAraigne(){
@@ -88,5 +100,12 @@ public class araignee : MonoBehaviour {
 	}
 	
 	private void faitApparaitreBoutDeToile (){
+	}
+
+	// pour apparition / disparition ombres
+	public void checkOmbres(){
+		/*if (estApparu && patternO.enabled == false) {
+			ombresApparaissent();
+		}*/
 	}
 }
