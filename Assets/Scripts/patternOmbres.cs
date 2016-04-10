@@ -27,6 +27,9 @@ public class patternOmbres : MonoBehaviour {
 			GameObject Shadow = Instantiate(Ombres[currentOmbre]);
 			Shadow.transform.parent = parent;
 			Shadow.transform.localPosition = new Vector3(0,1.34f,0);
+			if (Shadow.GetComponent<ombreCoteBougePates>() != null){
+				Shadow.GetComponent<ombreCoteBougePates>().init(parent);
+			}
 			currentOmbre +=1;
 			if (currentOmbre >= Ombres.Length) {
 				currentOmbre = 0;
