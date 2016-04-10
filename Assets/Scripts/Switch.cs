@@ -22,7 +22,6 @@ public class Switch : MonoBehaviour
 
         if (Input.GetKeyDown (KeyCode.V))   
         {
-            Debug.Log("changement camera");
             if (fpsCamera.enabled == false)
             {
                 fpsCamera.enabled = true;
