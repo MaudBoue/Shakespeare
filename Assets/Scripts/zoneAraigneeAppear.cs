@@ -19,7 +19,7 @@ public class zoneAraigneeAppear : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Camera01.enabled == false);
+        //if (Camera01.enabled == false);
     }
 
 	void OnTriggerEnter(Collider coll){

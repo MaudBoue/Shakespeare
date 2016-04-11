@@ -5,9 +5,11 @@ public class ombreCoteBougePates : MonoBehaviour
 {
 	private Animator anim;
 
-	private float tpsDebut;
+	public bool gauche;
 	public float[] tempsAnim;
 	public string[] boolToChange;
+
+	private float tpsDebut;
 
 	private int numAnim;
 	private bool isStarted;
@@ -44,7 +46,8 @@ public class ombreCoteBougePates : MonoBehaviour
 	}
 
 	public void init(Transform araignee) {
-		anim = araignee.FindChild("OmbreGauche").GetComponent<Animator> ();
+		if (gauche) anim = araignee.FindChild ("OmbreGauche").GetComponent<Animator> ();
+		else anim = araignee.FindChild ("OmbreDroite").GetComponent<Animator> ();
 		numAnim = 0;
 		tpsDebut = Time.time;
 		isStarted = true;

@@ -96,6 +96,7 @@ public class araignee : MonoBehaviour {
 	private void aEuAraigne(){
 		Debug.Log ("araignee Eue");
 		faitApparaitreBoutDeToile ();
+		GetComponentInChildren<zoneAraigneeAppear> ().Camera01.enabled = false;
 		GameObject.Destroy (this.gameObject);
 	}
 	
