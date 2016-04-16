@@ -15,12 +15,17 @@ public class araignee : MonoBehaviour {
 	//pour confrontation
 	private bool estApparu = false;
 	private bool regarde;
+	private move2 perso;
 	private float coefMonteJauge2 = 0.5f;
 	public patternOmbres patternO;
 
+	// lettres qui apparaissent
+	public GameObject lettres;
+	
 
 	// Use this for initialization
 	void Start () {
+		perso = FindObjectOfType<move2> ();
 		anim = GetComponent<Animator> ();
 		jaugeSprite = transform.FindChild ("Jauge");
 		jaugeSprite.localScale = new Vector3 (0,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
@@ -48,7 +53,7 @@ public class araignee : MonoBehaviour {
 
 		//Quand Araignée
 		if (estApparu) {
-			regarde = Input.GetKey(KeyCode.V);
+			regarde = perso.Regarde;
 			if (regarde && joueurEstDansZone ) {
 				jauge += coefMonteJauge2;
 				if (jauge >= tempsAppear) aEuAraigne();
@@ -84,8 +89,6 @@ public class araignee : MonoBehaviour {
 		anim.SetBool ("apparu", true);
 		jauge = 0;
 		ombresApparaissent ();
-		//transform.GetComponentInChildren<zoneAraigneeAppear> ().gameObject.SetActive (false);
-		//jaugeSprite.gameObject.SetActive (false);
 	}
 
 	private void ombresApparaissent(){
@@ -97,6 +100,7 @@ public class araignee : MonoBehaviour {
 		Debug.Log ("araignee Eue");
 		faitApparaitreBoutDeToile ();
 		GetComponentInChildren<zoneAraigneeAppear> ().Camera01.enabled = false;
+		lettres.SetActive (true);
 		GameObject.Destroy (this.gameObject);
 	}
 	

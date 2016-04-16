@@ -8,6 +8,8 @@ public class zoneAraigneeAppear : MonoBehaviour {
     private bool IsSwitch = false;
     public Camera mainCamera;
     public Camera Camera01;
+	// pour feedback quand touché
+	static public Canvas canvasGO;
 
     // Use this for initialization
     void Start () {
@@ -15,6 +17,7 @@ public class zoneAraigneeAppear : MonoBehaviour {
 
         mainCamera.enabled = true;
         Camera01.enabled = false;
+		canvasGO = FindObjectOfType<Canvas> ();
     }
 	
 	// Update is called once per frame
@@ -26,6 +29,7 @@ public class zoneAraigneeAppear : MonoBehaviour {
         if (coll.gameObject.tag == ("Player") && Camera01) {
 			parent.joueurEstDansZone = true;
             Camera01.enabled = true;
+			canvasGO.worldCamera = Camera01;
             parent.checkOmbres();
 		}
 	}
