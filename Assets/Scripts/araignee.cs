@@ -12,15 +12,15 @@ public class araignee : MonoBehaviour {
 	private float coefMonteJauge = 0.8f;
 	private Transform jaugeSprite;
 
-	//pour confrontation
+	// pour confrontation
 	private bool estApparu = false;
 	private bool regarde;
 	private move2 perso;
 	private float coefMonteJauge2 = 0.5f;
 	public patternOmbres patternO;
 
-	// lettres qui apparaissent
-	public GameObject lettres;
+    // lettres qui apparaissent
+    public GameObject lettres;
 	
 
 	// Use this for initialization
@@ -31,8 +31,9 @@ public class araignee : MonoBehaviour {
 		jaugeSprite.localScale = new Vector3 (0,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
 
 		patternO = GetComponent<patternOmbres> ();
-		//patternO.enabled = false;
-	}
+        //patternO.enabled = false;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -100,17 +101,18 @@ public class araignee : MonoBehaviour {
 		Debug.Log ("araignee Eue");
 		faitApparaitreBoutDeToile ();
 		GetComponentInChildren<zoneAraigneeAppear> ().Camera01.enabled = false;
-		lettres.SetActive (true);
+        GameObject.FindObjectOfType<Dezoom>().dezoomCamera();
+        lettres.SetActive (true);
 		GameObject.Destroy (this.gameObject);
 	}
 	
 	private void faitApparaitreBoutDeToile (){
 	}
 
-	// pour apparition / disparition ombres
-	public void checkOmbres(){
+    // pour apparition / disparition ombres
+    public void checkOmbres() { }
 		/*if (estApparu && patternO.enabled == false) {
 			ombresApparaissent();
 		}*/
-	}
-}
+
+    }
