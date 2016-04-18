@@ -18,11 +18,18 @@ public class move2 : MonoBehaviour {
 
 	//pour combat avec l'araignee
 	public bool Regarde;
+
+	//pour anim
+	public Animator animPerso;
+	private Transform Perso;
+
+	private float rot;
 	
 	
 	// Use this for initialization
 	void Start () {
 		rigid = GetComponent<Rigidbody> ();
+		Perso = animPerso.gameObject.GetComponent<Transform> ();
 	}
 	
 	// Update is called once per frame
@@ -39,6 +46,19 @@ public class move2 : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.V)) {
 			Regarde = true;
+		}
+
+		// pour changement d'anim
+		if (rigid.velocity == Vector3.zero) {
+			animPerso.Play("Idle");
+		}
+		if (rigid.velocity != Vector3.zero) {
+			animPerso.Play("Walk");
+		}
+
+		if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) ) {
+			rot = Quaternion.FromToRotation (new Vector3 (0, 0, 1), new Vector3 (rigid.velocity.x, 1, rigid.velocity.y)).eulerAngles.y;
+			Perso.rotation = Quaternion.Euler (0, rot, 0);
 		}
 	}
 	
