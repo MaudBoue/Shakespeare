@@ -61,6 +61,7 @@ public class move2 : MonoBehaviour {
 		if (coll.gameObject.tag == "Ombre") {
 			feedbackTouche.SetBool("play",true);
 			fakeForce = puissanceForce;
+			Regarde = false;
 			StartCoroutine(desactiveAnimLater());
 		}
 	}
@@ -70,8 +71,6 @@ public class move2 : MonoBehaviour {
 		feedbackTouche.SetBool ("play", false);
 	}
 
-	
-	void afficheCacheFeedback () {
-	}
+
 	
 }

@@ -76,7 +76,7 @@ public class araignee : MonoBehaviour {
 	}
 
 
-	// vistoire contre araigée si collision
+	// victoire contre araigée si collision
 	/*void OnCollisionEnter(Collision coll){
 		if (coll.gameObject.tag == ("Player") && estApparu) {
 			aEuAraigne();

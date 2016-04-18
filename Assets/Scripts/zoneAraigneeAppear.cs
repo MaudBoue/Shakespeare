@@ -37,6 +37,7 @@ public class zoneAraigneeAppear : MonoBehaviour {
 	void OnTriggerExit(Collider coll){
 		if (coll.gameObject.tag == ("Player") && Camera01) {	
 			parent.joueurEstDansZone = false;
+			coll.GetComponent<move2>().Regarde=false;
             Camera01.enabled = false;
         }
 	}

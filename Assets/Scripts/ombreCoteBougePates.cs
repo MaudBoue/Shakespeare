@@ -28,7 +28,7 @@ public class ombreCoteBougePates : MonoBehaviour
 				numAnim += 1;
 				anim.SetBool(boolToChange[numAnim-1],true);
 				hasAnimToStop = true;
-			    Debug.Log("anim"+numAnim);
+			   // Debug.Log("anim"+numAnim);
 			}
 		}
 
@@ -37,7 +37,7 @@ public class ombreCoteBougePates : MonoBehaviour
 				hasAnimToStop = false;
 				anim.SetBool(boolToChange[numAnim-1],false);
 				if (numAnim >= tempsAnim.Length) {
-					Debug.Log("destroy");
+					//Debug.Log("destroy");
 					GameObject.Destroy(this.gameObject);
 				}
 			}
