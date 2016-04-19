@@ -9,7 +9,7 @@ public class araignee : MonoBehaviour {
 	public bool joueurEstDansZone;
 	private float jauge;
 	private float tempsAppear = 100;
-	private float coefMonteJauge = 0.8f;
+	private float coefMonteJauge = 0.5f;
 	private Transform jaugeSprite;
 
 	// pour confrontation
@@ -42,12 +42,14 @@ public class araignee : MonoBehaviour {
 		if (!estApparu) {
 			if (joueurEstDansZone) {
 				jauge += coefMonteJauge*1.5f;
+				anim.SetFloat("evolution",jauge);
 				if (jauge >= tempsAppear) transformationEnAraignee();
 				jaugeSprite.localScale = new Vector3 (jauge*6,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
 			}
 
 			if (!joueurEstDansZone && jauge > 0) {
 				jauge -= coefMonteJauge / 2;
+				anim.SetFloat("evolution",jauge);
 				jaugeSprite.localScale = new Vector3 (jauge*6,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
 			}
 		}

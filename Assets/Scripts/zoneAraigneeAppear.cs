@@ -14,7 +14,7 @@ public class zoneAraigneeAppear : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		parent = transform.parent.GetComponent<araignee>();
-
+		mainCamera = GameObject.FindObjectOfType<Dezoom> ().GetComponent<Camera> ();
         mainCamera.enabled = true;
         Camera01.enabled = false;
 		canvasGO = FindObjectOfType<Canvas> ();
