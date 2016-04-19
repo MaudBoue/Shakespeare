@@ -57,8 +57,9 @@ public class move2 : MonoBehaviour {
 		}
 
 		if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) ) {
-			rot = Quaternion.FromToRotation (new Vector3 (0, 0, 1), new Vector3 (rigid.velocity.x, 1, rigid.velocity.y)).eulerAngles.y;
+			rot = Quaternion.FromToRotation (new Vector3 (0, 0, 1), new Vector3 (rigid.velocity.x, 1, rigid.velocity.z)).eulerAngles.y;
 			Perso.rotation = Quaternion.Euler (0, rot, 0);
+			Debug.Log (rot);
 		}
 	}
 	
