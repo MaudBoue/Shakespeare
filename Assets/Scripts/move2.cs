@@ -22,9 +22,13 @@ public class move2 : MonoBehaviour {
 	//pour anim
 	public Animator animPerso;
 	private Transform Perso;
-
 	private float rot;
-	
+
+	//pour feedback du lock
+	public bool joueurPresDaraignee;
+	public GameObject Lock; 
+	public GameObject lockModele;
+
 	
 	// Use this for initialization
 	void Start () {
@@ -44,8 +48,10 @@ public class move2 : MonoBehaviour {
 			fakeForce = Mathf.Lerp(fakeForce,0,timeForce);
 		}
 
+		// lock
 		if (Input.GetKeyDown (KeyCode.V)) {
-			Regarde = true;
+			if (joueurPresDaraignee) activeLock();
+			else lockDansLeVide();
 		}
 
 		// pour changement d'anim
@@ -72,7 +78,7 @@ public class move2 : MonoBehaviour {
 	if (coll.gameObject.tag == "Ombre") {
 			feedbackTouche.SetBool("play",true);
 			fakeForce = puissanceForce;
-			Regarde = false;
+			desactiveLock ();
 			StartCoroutine(desactiveAnimLater());
 		}
 	}
@@ -81,7 +87,7 @@ public class move2 : MonoBehaviour {
 		if (coll.gameObject.tag == "Ombre") {
 			feedbackTouche.SetBool("play",true);
 			fakeForce = puissanceForce;
-			Regarde = false;
+			desactiveLock();
 			StartCoroutine(desactiveAnimLater());
 		}
 	}
@@ -89,6 +95,22 @@ public class move2 : MonoBehaviour {
 	IEnumerator desactiveAnimLater(){
 		yield return new WaitForSeconds(0.1f);
 		feedbackTouche.SetBool ("play", false);
+	}
+
+	// pour Lock
+	void activeLock () {
+		Regarde = true;
+		Lock.SetActive(true);
+	}
+
+	public void desactiveLock () {
+		Regarde = false;
+		Lock.SetActive(false);
+	}
+
+	void lockDansLeVide () {
+		Lock = Instantiate (lockModele);
+		Lock.transform.position = new Vector3 (transform.position.x,Lock.transform.position.y,transform.position.z+3);
 	}
 
 

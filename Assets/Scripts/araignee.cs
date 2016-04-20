@@ -21,8 +21,10 @@ public class araignee : MonoBehaviour {
 
     // lettres qui apparaissent
     public GameObject lettres;
-	
 
+	//pour lock
+	public GameObject Lock;
+	
 	// Use this for initialization
 	void Start () {
 		perso = FindObjectOfType<move2> ();
@@ -111,7 +113,11 @@ public class araignee : MonoBehaviour {
 	private void faitApparaitreBoutDeToile (){
 	}
 
-    // pour apparition / disparition ombres
+
+
+
+
+    // pour optimisation : apparition / disparition ombres
     public void checkOmbres() { }
 		/*if (estApparu && patternO.enabled == false) {
 			ombresApparaissent();

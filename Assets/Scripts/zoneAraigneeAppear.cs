@@ -4,15 +4,21 @@ using System.Collections;
 public class zoneAraigneeAppear : MonoBehaviour {
 
 	private araignee parent;
-    //Camera
+    
+	//Camera
     private bool IsSwitch = false;
     public Camera mainCamera;
     public Camera Camera01;
+
 	// pour feedback quand touché
 	static public Canvas canvasGO;
 
+	//pour lock
+	static public move2 perso;
+
     // Use this for initialization
     void Start () {
+		perso = FindObjectOfType<move2> ();
 		parent = transform.parent.GetComponent<araignee>();
 		mainCamera = GameObject.FindObjectOfType<Dezoom> ().GetComponent<Camera> ();
         mainCamera.enabled = true;
@@ -27,17 +33,20 @@ public class zoneAraigneeAppear : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll){
         if (coll.gameObject.tag == ("Player") && Camera01) {
+			perso.Lock = parent.Lock;
 			parent.joueurEstDansZone = true;
+			perso.joueurPresDaraignee = true;
             Camera01.enabled = true;
 			canvasGO.worldCamera = Camera01;
-            parent.checkOmbres();
+            //parent.checkOmbres();
 		}
 	}
 
 	void OnTriggerExit(Collider coll){
 		if (coll.gameObject.tag == ("Player") && Camera01) {	
 			parent.joueurEstDansZone = false;
-			coll.GetComponent<move2>().Regarde=false;
+			perso.joueurPresDaraignee = false;
+			coll.GetComponent<move2>().desactiveLock();
             Camera01.enabled = false;
         }
 	}
