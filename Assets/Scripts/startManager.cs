@@ -13,9 +13,9 @@ public class startManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if (Input.GetKeyDown(KeyCode.Space)){
+		if (Input.GetKeyDown(KeyCode.B)){
 			if (startScreen){
-			Application.LoadLevel("testAraignee");
+			Application.LoadLevel("Testlabyrinthe13");
 			}
 			else {
 			Application.LoadLevel("startScreen");

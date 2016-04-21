@@ -55,7 +55,7 @@ public class move2 : MonoBehaviour {
 		}
 
 		// lock
-		if (Input.GetKeyDown (KeyCode.V)) {
+		if (Input.GetKeyDown (KeyCode.A)) {
 			if (joueurPresDaraignee) activeLock();
 			else lockDansLeVide();
 		}

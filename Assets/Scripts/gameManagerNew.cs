@@ -4,12 +4,15 @@ using System.Collections;
 public class gameManagerNew : MonoBehaviour
 {
 
-	private bool isPause;
+	public bool isPause;
 	public GameObject ecranPause;
+	private Canvas canvasGO;
 
 	// Use this for initialization
 	void Start ()
 	{
+		canvasGO = GameObject.FindObjectOfType<Canvas> ();
+		canvasGO.worldCamera = GameObject.FindObjectOfType<Dezoom> ().GetComponent<Camera> ();
 		isPause = false;
 	}
 	
@@ -25,23 +28,31 @@ public class gameManagerNew : MonoBehaviour
 		}
 
 		if (Input.GetKeyDown (KeyCode.B)) {
-			metPause ();
+			if (!isPause) metPause ();
+			else enlevePause();
+		}
+
+		if (isPause && Input.GetKeyDown (KeyCode.A)) {
+			quitter();
 		}
 	}
 
 	void metPause() {
 		isPause = true;
+		Time.timeScale = 0;
 		if (ecranPause) {
 			ecranPause.SetActive(true);
 		}
 	}
 
 	void quitter () {
+		enlevePause ();
 		Application.LoadLevel("startScreen");
 	}
 
 	void enlevePause(){
 		isPause = false;
+		Time.timeScale = 1;
 		if (ecranPause) {
 			ecranPause.SetActive(false);
 		}

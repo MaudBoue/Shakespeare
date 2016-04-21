@@ -36,9 +36,13 @@ public class araignee : MonoBehaviour {
 	public AudioClip finTransfo; 
 	public AudioClip off;
 	private bool joueSon;
+
+	// pour pause
+	private gameManagerNew gameManagerGO;
 	
 	// Use this for initialization
 	void Start () {
+		gameManagerGO = FindObjectOfType<gameManagerNew>();
 		perso = FindObjectOfType<move2> ();
 		anim = GetComponent<Animator> ();
 		jaugeSprite = transform.FindChild ("Jauge");
@@ -56,7 +60,7 @@ public class araignee : MonoBehaviour {
 	void Update () {
 	
 		// Quand forme floue
-		if (!estApparu) {
+		if (!estApparu && !gameManagerGO.isPause) {
 
 			if (joueSon && jauge <= 0){
 				joueSon=false;
@@ -89,7 +93,7 @@ public class araignee : MonoBehaviour {
 		}
 
 		//Quand Araignée
-		if (estApparu) {
+		if (estApparu && !gameManagerGO.isPause) {
 			regarde = perso.Regarde;
 			if (regarde && joueurEstDansZone ) {
 				jauge += coefMonteJauge2;

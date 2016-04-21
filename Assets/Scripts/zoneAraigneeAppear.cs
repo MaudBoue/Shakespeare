@@ -47,6 +47,7 @@ public class zoneAraigneeAppear : MonoBehaviour {
 			parent.joueurEstDansZone = false;
 			perso.joueurPresDaraignee = false;
 			coll.GetComponent<move2>().desactiveLock();
+			canvasGO.worldCamera = mainCamera;
             Camera01.enabled = false;
         }
 	}
