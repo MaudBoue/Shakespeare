@@ -33,9 +33,10 @@ public class zoneAraigneeAppear : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll){
         if (coll.gameObject.tag == ("Player") && Camera01) {
-			perso.Lock = parent.Lock;
+			//perso.Lock = parent.Lock;
 			parent.joueurEstDansZone = true;
-			perso.joueurPresDaraignee = true;
+			perso.dansZoneAraignee(parent.Lock);
+			//perso.joueurPresDaraignee = true;
             Camera01.enabled = true;
 			canvasGO.worldCamera = Camera01;
             //parent.checkOmbres();
@@ -45,8 +46,9 @@ public class zoneAraigneeAppear : MonoBehaviour {
 	void OnTriggerExit(Collider coll){
 		if (coll.gameObject.tag == ("Player") && Camera01) {	
 			parent.joueurEstDansZone = false;
-			perso.joueurPresDaraignee = false;
-			coll.GetComponent<move2>().desactiveLock();
+			perso.ExitZoneAraignee();
+			//perso.joueurPresDaraignee = false;
+			//coll.GetComponent<move2>().desactiveLock();
 			canvasGO.worldCamera = mainCamera;
             Camera01.enabled = false;
         }

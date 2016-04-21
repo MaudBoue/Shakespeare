@@ -3,7 +3,9 @@ using System.Collections;
 
 public class move2 : MonoBehaviour {
 	
-	public Vector2 speed = new Vector2(10,10);
+	public Vector2 speedLaby ;
+	public Vector2 speedFight ;
+	private Vector2 speed;
 	private Vector3 movement;
 
 	private Rigidbody rigid;
@@ -37,6 +39,7 @@ public class move2 : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		speed = speedLaby;
 		rigid = GetComponent<Rigidbody> ();
 		Perso = animPerso.gameObject.GetComponent<Transform> ();
 		soundManagerGO = FindObjectOfType<soundManager> ();
@@ -132,6 +135,19 @@ public class move2 : MonoBehaviour {
 		Lock.transform.position = new Vector3 (transform.position.x,Lock.transform.position.y,transform.position.z+3);
 	}
 
+	// entre et sort de zone d'araignee 
 
+	public void dansZoneAraignee ( GameObject lockCurrentAraignee){
+		Lock = lockCurrentAraignee;
+		joueurPresDaraignee = true;
+		speed = speedFight;
+	}
+	
+	public void ExitZoneAraignee () {
+		joueurPresDaraignee = false;
+		desactiveLock();
+		speed = speedLaby;
+		soundManagerGO.stopSound (0);
+	}
 	
 }

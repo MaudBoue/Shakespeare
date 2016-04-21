@@ -143,6 +143,7 @@ public class araignee : MonoBehaviour {
 
 	private void aEuAraigne(){
 		Debug.Log ("araignee Eue");
+		soundManagerGO.stopSound (0);
 		faitApparaitreBoutDeToile ();
 		GetComponentInChildren<zoneAraigneeAppear> ().Camera01.enabled = false;
         GameObject.FindObjectOfType<Dezoom>().dezoomCamera();
