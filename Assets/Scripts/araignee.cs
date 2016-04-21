@@ -143,12 +143,12 @@ public class araignee : MonoBehaviour {
 
 	private void aEuAraigne(){
 		Debug.Log ("araignee Eue");
+		soundManagerGO.stopSound (0);
 		faitApparaitreBoutDeToile ();
 		GetComponentInChildren<zoneAraigneeAppear> ().Camera01.enabled = false;
         GameObject.FindObjectOfType<Dezoom>().dezoomCamera();
         lettres.SetActive (true);
-		perso.joueurPresDaraignee = false;
-		perso.desactiveLock ();
+		perso.ExitZoneAraignee ();
 		foreach (GameObject toile in toilesQuiBloquent){
 			toile.SetActive(false);
 			//GameObject.Destroy(toile);

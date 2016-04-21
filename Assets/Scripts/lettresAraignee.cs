@@ -11,7 +11,6 @@ public class lettresAraignee : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		lettres = transform.GetComponentsInChildren<Transform> ();
-		Debug.Log (lettres.Length);
 		i = 0;
 		foreach (Transform lettre in lettres){
 			lettre.gameObject.SetActive(false);
