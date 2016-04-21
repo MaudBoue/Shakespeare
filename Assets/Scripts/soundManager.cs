@@ -41,9 +41,12 @@ public class soundManager : MonoBehaviour {
 		if (sourceNum > sourcesbruitage.Length) {
 			sourceNum = sourcesbruitage.Length;
 		}
-		if (changePitch) 
-		{float randomPitch = Random.Range (lowPitchRange, hightPitchRange);
-			sourcesbruitage[sourceNum].pitch = randomPitch; }
+		if (changePitch) {
+			float randomPitch = Random.Range (lowPitchRange, hightPitchRange);
+			sourcesbruitage [sourceNum].pitch = randomPitch;
+		} else {
+			sourcesbruitage [sourceNum].pitch = 1;
+		}
 		sourcesbruitage[sourceNum].clip = Clip;
 		sourcesbruitage[sourceNum].volume = volume;
 		sourcesbruitage[sourceNum].Play ();
@@ -59,6 +62,10 @@ public class soundManager : MonoBehaviour {
 		sourcesbruitage[sourceNum].clip = Clips [randomIndex];
 		sourcesbruitage[sourceNum].Play ();
 		
+	}
+
+	public void stopSound (int sourceNum = 0){
+		sourcesbruitage[sourceNum].Stop ();
 	}
 
 }

@@ -28,6 +28,14 @@ public class araignee : MonoBehaviour {
 
 	// toiles qui disparaissent quand tuée
 	public GameObject[] toilesQuiBloquent;
+
+	//pour sons
+	public bool fintransfoOk = false;
+	private soundManager soundManagerGO;
+	public AudioClip transfoAraignee;
+	public AudioClip finTransfo; 
+	public AudioClip off;
+	private bool joueSon;
 	
 	// Use this for initialization
 	void Start () {
@@ -37,7 +45,8 @@ public class araignee : MonoBehaviour {
 		jaugeSprite.localScale = new Vector3 (0,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
 		brilleRend = jaugeSprite.FindChild ("brille").GetComponent<SpriteRenderer>();
 		brilleRend.enabled = false;
-
+		soundManagerGO = FindObjectOfType<soundManager> ();
+		
 		patternO = GetComponent<patternOmbres> ();
         //patternO.enabled = false;
 
@@ -48,9 +57,20 @@ public class araignee : MonoBehaviour {
 	
 		// Quand forme floue
 		if (!estApparu) {
+
+			if (joueSon && jauge <= 0){
+				joueSon=false;
+				soundManagerGO.PlaySingleSound(off,true,1);
+			}
+
 			if (joueurEstDansZone) {
 				jauge += coefMonteJauge*1.5f;
 				anim.SetFloat("evolution",jauge);
+				//son
+				if (!joueSon){
+					joueSon=true;
+					soundManagerGO.PlaySingleSound(transfoAraignee,false,1);
+				}
 				if (jauge >= tempsAppear) transformationEnAraignee();
 				jaugeSprite.localScale = new Vector3 (jauge*6,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
 			}
@@ -59,7 +79,13 @@ public class araignee : MonoBehaviour {
 				jauge -= coefMonteJauge / 2;
 				anim.SetFloat("evolution",jauge);
 				jaugeSprite.localScale = new Vector3 (jauge*6,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
+				if (joueSon){
+					joueSon=false;
+					soundManagerGO.PlaySingleSound(off,true,1);
+				}
 			}
+
+
 		}
 
 		//Quand Araignée
@@ -102,6 +128,7 @@ public class araignee : MonoBehaviour {
 		estApparu = true;
 		anim.SetBool ("apparu", true);
 		jauge = 0;
+		soundManagerGO.PlaySingleSound(finTransfo,false,1);
 		ombresApparaissent ();
 	}
 

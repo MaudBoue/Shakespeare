@@ -29,11 +29,17 @@ public class move2 : MonoBehaviour {
 	public GameObject Lock; 
 	public GameObject lockModele;
 
+	//pour sons
+	private soundManager soundManagerGO;
+	public AudioClip lockOn;
+	public AudioClip lockOff;
+	public AudioClip lockDansVide;
 	
 	// Use this for initialization
 	void Start () {
 		rigid = GetComponent<Rigidbody> ();
 		Perso = animPerso.gameObject.GetComponent<Transform> ();
+		soundManagerGO = FindObjectOfType<soundManager> ();
 	}
 	
 	// Update is called once per frame
@@ -88,6 +94,7 @@ public class move2 : MonoBehaviour {
 			feedbackTouche.SetBool("play",true);
 			fakeForce = puissanceForce;
 			desactiveLock ();
+			soundManagerGO.PlaySingleSound(lockOff);
 			StartCoroutine(desactiveAnimLater());
 		}
 	}
@@ -97,6 +104,7 @@ public class move2 : MonoBehaviour {
 			feedbackTouche.SetBool("play",true);
 			fakeForce = puissanceForce;
 			desactiveLock();
+			soundManagerGO.PlaySingleSound(lockOff);
 			StartCoroutine(desactiveAnimLater());
 		}
 	}
@@ -108,6 +116,7 @@ public class move2 : MonoBehaviour {
 
 	// pour Lock
 	void activeLock () {
+		soundManagerGO.PlaySingleSound (lockOn,false);
 		Regarde = true;
 		Lock.SetActive(true);
 	}
@@ -118,6 +127,7 @@ public class move2 : MonoBehaviour {
 	}
 
 	void lockDansLeVide () {
+		soundManagerGO.PlaySingleSound (lockDansVide,false);
 		Lock = Instantiate (lockModele);
 		Lock.transform.position = new Vector3 (transform.position.x,Lock.transform.position.y,transform.position.z+3);
 	}
