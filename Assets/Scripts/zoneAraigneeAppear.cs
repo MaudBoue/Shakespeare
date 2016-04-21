@@ -6,7 +6,6 @@ public class zoneAraigneeAppear : MonoBehaviour {
 	private araignee parent;
     
 	//Camera
-    private bool IsSwitch = false;
     public Camera mainCamera;
     public Camera Camera01;
 
