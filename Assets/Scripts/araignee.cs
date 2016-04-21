@@ -18,12 +18,16 @@ public class araignee : MonoBehaviour {
 	private move2 perso;
 	private float coefMonteJauge2 = 0.5f;
 	public patternOmbres patternO;
+	private SpriteRenderer brilleRend;
 
     // lettres qui apparaissent
     public GameObject lettres;
 
 	//pour lock
 	public GameObject Lock;
+
+	// toiles qui disparaissent quand tuée
+	public GameObject[] toilesQuiBloquent;
 	
 	// Use this for initialization
 	void Start () {
@@ -31,6 +35,8 @@ public class araignee : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		jaugeSprite = transform.FindChild ("Jauge");
 		jaugeSprite.localScale = new Vector3 (0,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
+		brilleRend = jaugeSprite.FindChild ("brille").GetComponent<SpriteRenderer>();
+		brilleRend.enabled = false;
 
 		patternO = GetComponent<patternOmbres> ();
         //patternO.enabled = false;
@@ -63,8 +69,11 @@ public class araignee : MonoBehaviour {
 				jauge += coefMonteJauge2;
 				if (jauge >= tempsAppear) aEuAraigne();
 				jaugeSprite.localScale = new Vector3 (jauge*6,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
+				if (brilleRend.enabled == false) brilleRend.enabled=true;
 			}
-
+			else {
+				if (brilleRend.enabled == true) brilleRend.enabled=false;
+			}
 			if (jauge > 0 && (!regarde || !joueurEstDansZone)) {
 			jauge -= coefMonteJauge2 / 2;
 			jaugeSprite.localScale = new Vector3 (jauge*6,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
@@ -109,6 +118,10 @@ public class araignee : MonoBehaviour {
         lettres.SetActive (true);
 		perso.joueurPresDaraignee = false;
 		perso.desactiveLock ();
+		foreach (GameObject toile in toilesQuiBloquent){
+			toile.SetActive(false);
+			//GameObject.Destroy(toile);
+		}
 		GameObject.Destroy (this.gameObject);
 	}
 	

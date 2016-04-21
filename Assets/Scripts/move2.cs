@@ -62,10 +62,19 @@ public class move2 : MonoBehaviour {
 			animPerso.Play("Walk");
 		}
 
-		if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) ) {
-			rot = Quaternion.FromToRotation (new Vector3 (0, 0, 1), new Vector3 (rigid.velocity.x, 1, rigid.velocity.z)).eulerAngles.y;
+		//rotation
+		if (!Regarde) {
+			if (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.DownArrow)) {
+				rot = Quaternion.FromToRotation (new Vector3 (0, 0, 1), new Vector3 (rigid.velocity.x, 1, rigid.velocity.z)).eulerAngles.y;
+				Perso.rotation = Quaternion.Euler (0, rot, 0);
+			}
+		}
+		if (Regarde) {
+			rot = Quaternion.FromToRotation (new Vector3 (0, 0, 1), new Vector3 ( Lock.transform.position.x-transform.position.x,1,Lock.transform.position.z-transform.position.z/* distance lock */)).eulerAngles.y;
 			Perso.rotation = Quaternion.Euler (0, rot, 0);
 		}
+
+
 	}
 	
 	void FixedUpdate(){
