@@ -35,11 +35,15 @@ public class araignee : MonoBehaviour {
 	public AudioClip transfoAraignee;
 	public AudioClip finTransfo; 
 	public AudioClip off;
+	public AudioClip finAraignee;
 	private bool joueSon;
 
 	// pour pause
 	private gameManagerNew gameManagerGO;
-	
+
+	// pour anim de fin
+	public bool animFinFinie;
+
 	// Use this for initialization
 	void Start () {
 		gameManagerGO = FindObjectOfType<gameManagerNew>();
@@ -114,6 +118,9 @@ public class araignee : MonoBehaviour {
 			
 			}*/
 
+			if (animFinFinie){
+				destroyAraignee();
+			}
 		}
 
 	}
@@ -143,11 +150,17 @@ public class araignee : MonoBehaviour {
 
 	private void aEuAraigne(){
 		Debug.Log ("araignee Eue");
+		perso.desactiveLock ();
 		soundManagerGO.stopSound (0);
-		faitApparaitreBoutDeToile ();
+		soundManagerGO.PlaySingleSound(finAraignee,false,1);
+		anim.Play("araigneeVaincue");
+	}
+	
+
+	private void destroyAraignee () {
 		GetComponentInChildren<zoneAraigneeAppear> ().Camera01.enabled = false;
-        GameObject.FindObjectOfType<Dezoom>().dezoomCamera();
-        lettres.SetActive (true);
+		GameObject.FindObjectOfType<Dezoom>().dezoomCamera();
+		lettres.SetActive (true);
 		perso.ExitZoneAraignee ();
 		foreach (GameObject toile in toilesQuiBloquent){
 			toile.SetActive(false);
@@ -156,14 +169,8 @@ public class araignee : MonoBehaviour {
 		GameObject.Destroy (this.gameObject);
 	}
 	
-	private void faitApparaitreBoutDeToile (){
-	}
-
-
-
-
-
-    // pour optimisation : apparition / disparition ombres
+	
+	// pour optimisation : apparition / disparition ombres
     public void checkOmbres() { }
 		/*if (estApparu && patternO.enabled == false) {
 			ombresApparaissent();
