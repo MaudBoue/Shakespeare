@@ -9,7 +9,7 @@ public class araignee : MonoBehaviour {
 	public bool joueurEstDansZone;
 	private float jauge;
 	private float tempsAppear = 100;
-	private float coefMonteJauge = 0.5f;
+	private float coefMonteJauge = 0.8f;
 	private Transform jaugeSprite;
 
 	// pour confrontation
