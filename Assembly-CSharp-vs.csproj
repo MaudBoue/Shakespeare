@@ -46,24 +46,22 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Dezoom.cs" />
      <Compile Include="Assets\Scripts\Ombre.cs" />
      <Compile Include="Assets\Scripts\Switch.cs" />
      <Compile Include="Assets\Scripts\araignee.cs" />
      <Compile Include="Assets\Scripts\cameraFollow.cs" />
-     <Compile Include="Assets\Scripts\cameraFollowRotate.cs" />
-     <Compile Include="Assets\Scripts\gameManager.cs" />
-     <Compile Include="Assets\Scripts\gameManager2.cs" />
+     <Compile Include="Assets\Scripts\finConnaissance.cs" />
+     <Compile Include="Assets\Scripts\finIgnorance.cs" />
      <Compile Include="Assets\Scripts\gameManagerNew.cs" />
+     <Compile Include="Assets\Scripts\lettresAraignee.cs" />
+     <Compile Include="Assets\Scripts\lockScript.cs" />
      <Compile Include="Assets\Scripts\move2.cs" />
-     <Compile Include="Assets\Scripts\move3.cs" />
      <Compile Include="Assets\Scripts\ombreCoteBougePates.cs" />
      <Compile Include="Assets\Scripts\patternOmbres.cs" />
      <Compile Include="Assets\Scripts\soundManager.cs" />
      <Compile Include="Assets\Scripts\startManager.cs" />
-     <Compile Include="Assets\Scripts\zoneAraignee.cs" />
      <Compile Include="Assets\Scripts\zoneAraigneeAppear.cs" />
-     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
-     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -76,10 +74,6 @@
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
-      <Project>{1CDCF59C-6DD4-C7C5-E69C-2FD74CF6C0A4}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
