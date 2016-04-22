@@ -13,6 +13,7 @@ public class araignee : MonoBehaviour {
 	private Transform jaugeSprite;
 
 	// pour confrontation
+	public float lifeTime = 100;
 	private bool estApparu = false;
 	private bool regarde;
 	private move2 perso;
@@ -101,7 +102,7 @@ public class araignee : MonoBehaviour {
 			regarde = perso.Regarde;
 			if (regarde && joueurEstDansZone ) {
 				jauge += coefMonteJauge2;
-				if (jauge >= tempsAppear) aEuAraigne();
+				if (jauge >= lifeTime) aEuAraigne();
 				jaugeSprite.localScale = new Vector3 (jauge*6,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
 				if (brilleRend.enabled == false) brilleRend.enabled=true;
 			}
