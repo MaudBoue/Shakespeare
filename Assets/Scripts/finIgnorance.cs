@@ -9,11 +9,13 @@ public class finIgnorance : MonoBehaviour {
 	private Camera mainCamera;
 	private float alphaBlanc;
 	private Transform joueur;
+	private Transform rep;
 
 	// Use this for initialization
 	void Start () {
 		mainCamera = GameObject.FindObjectOfType<Dezoom>().gameObject.GetComponent<Camera>();
 		joueur = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform>();
+		rep = GetComponentInChildren<Transform> ();
 	}
 	
 	// Update is called once per frame
@@ -31,18 +33,18 @@ public class finIgnorance : MonoBehaviour {
 
 	void OnTriggerExit(Collider coll){
 		if (coll.gameObject.tag == "Player") {
-			//if (!finDuChemin)
-				//alphaBlanc = 0;
-				//blanc.gameObject.SetActive (false);
+			if (!finDuChemin)
+				alphaBlanc = 0;
+				blanc.gameObject.SetActive (false);
 		}
 	}
 
 	void OnTriggerStay (Collider coll){
 		if (!finDuChemin && coll.gameObject.tag == "Player") {
 			if (blanc) {
-				alphaBlanc = (transform.position.x - joueur.position.x)/12;
-				Debug.Log (alphaBlanc);
+				alphaBlanc = Vector3.Distance(rep.position, joueur.position)/18;
 				blanc.color = new Color (1,1,1,1-alphaBlanc);}
-			}
+			if (alphaBlanc <= 0.1f)  Application.LoadLevel("EndScreenIgnorance");
+		}
 	}
 }

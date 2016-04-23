@@ -22,6 +22,7 @@ public class lettresAraigneesHaut : MonoBehaviour {
 	}
 
 	public void End(){
-		anim.SetBool("End", true);
+		Debug.Log ("end lettres");
+		anim.SetBool("end", true);
 	}
 }
