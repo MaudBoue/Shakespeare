@@ -20,7 +20,7 @@ public class gameManagerNew : MonoBehaviour
 	void Update ()
 	{
 		if (Input.GetKeyDown (KeyCode.Q)) {
-			Application.LoadLevel(Application.loadedLevel);
+			Application.Quit();
 		}
 
 		/*if (Input.GetKeyDown (KeyCode.Escape)) {
