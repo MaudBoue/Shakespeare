@@ -45,6 +45,12 @@ public class araignee : MonoBehaviour {
 	// pour anim de fin
 	public bool animFinFinie;
 
+	//pour Lettres
+	public lettresAraigneesHaut lettresHaut;
+	private float palier1;
+	private float palier2;
+	private int currentPhase;
+
 	// Use this for initialization
 	void Start () {
 		gameManagerGO = FindObjectOfType<gameManagerNew>();
@@ -59,6 +65,9 @@ public class araignee : MonoBehaviour {
 		patternO = GetComponent<patternOmbres> ();
         //patternO.enabled = false;
 
+		// pour lettres au dessus
+		palier1 = lifeTime / 3;
+		palier2 = lifeTime * 2 / 3;
     }
 	
 	// Update is called once per frame
@@ -151,6 +160,7 @@ public class araignee : MonoBehaviour {
 
 	private void aEuAraigne(){
 		Debug.Log ("araignee Eue");
+		lettresHaut.End ();
 		perso.desactiveLock ();
 		soundManagerGO.stopSound (0);
 		soundManagerGO.PlaySingleSound(finAraignee,false,1);
@@ -163,9 +173,9 @@ public class araignee : MonoBehaviour {
 		GameObject.FindObjectOfType<Dezoom>().dezoomCamera();
 		lettres.SetActive (true);
 		perso.ExitZoneAraignee ();
-		foreach (GameObject toile in toilesQuiBloquent){
-			toile.SetActive(false);
-			//GameObject.Destroy(toile);
+		if (toilesQuiBloquent.Length != 0){
+			foreach (GameObject toile in toilesQuiBloquent){
+				toile.SetActive(false);}
 		}
 		GameObject.Destroy (this.gameObject);
 	}
