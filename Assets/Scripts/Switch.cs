@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Switch : MonoBehaviour
 {
-    private bool IsSwitch = false;
+//    private bool IsSwitch = false;
     public Camera mainCamera;
     public Camera fpsCamera;
 
