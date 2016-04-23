@@ -60,6 +60,9 @@ public class araignee : MonoBehaviour {
 		jaugeSprite.localScale = new Vector3 (0,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
 		brilleRend = jaugeSprite.FindChild ("brille").GetComponent<SpriteRenderer>();
 		brilleRend.enabled = false;
+		if (lettresHaut != null) {
+			lettresHaut.gameObject.SetActive(false);
+		}
 		soundManagerGO = FindObjectOfType<soundManager> ();
 		
 		patternO = GetComponent<patternOmbres> ();
@@ -150,6 +153,7 @@ public class araignee : MonoBehaviour {
 		anim.SetBool ("apparu", true);
 		jauge = 0;
 		soundManagerGO.PlaySingleSound(finTransfo,false,1);
+		lettresHaut.gameObject.SetActive(true);
 		ombresApparaissent ();
 	}
 
