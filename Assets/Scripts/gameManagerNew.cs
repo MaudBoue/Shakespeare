@@ -29,11 +29,11 @@ public class gameManagerNew : MonoBehaviour
 
 		if (Input.GetKeyDown (KeyCode.B)) {
 			if (!isPause) metPause ();
-			else enlevePause();
+			else quitter();
 		}
 
 		if (isPause && Input.GetKeyDown (KeyCode.A)) {
-			quitter();
+			enlevePause();
 		}
 	}
 

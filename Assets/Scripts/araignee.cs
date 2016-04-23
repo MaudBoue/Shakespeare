@@ -62,6 +62,8 @@ public class araignee : MonoBehaviour {
 		brilleRend.enabled = false;
 		if (lettresHaut != null) {
 			lettresHaut.gameObject.SetActive(false);
+			lettresHaut.transform.parent=this.transform;
+			lettresHaut.transform.localPosition = new Vector3 (0,0,-8.26f);
 		}
 		soundManagerGO = FindObjectOfType<soundManager> ();
 		
