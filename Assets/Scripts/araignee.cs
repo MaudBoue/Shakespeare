@@ -175,7 +175,9 @@ public class araignee : MonoBehaviour {
 	
 
 	private void destroyAraignee () {
-		GetComponentInChildren<zoneAraigneeAppear> ().Camera01.enabled = false;
+		zoneAraigneeAppear zone = GetComponentInChildren<zoneAraigneeAppear> ();
+		GameObject.FindObjectOfType<Canvas>().worldCamera = zone.mainCamera;
+		zone.Camera01.enabled = false;
 		GameObject.FindObjectOfType<Dezoom>().dezoomCamera();
 		lettres.SetActive (true);
 		perso.ExitZoneAraignee ();

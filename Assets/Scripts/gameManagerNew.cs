@@ -19,20 +19,20 @@ public class gameManagerNew : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Input.GetKeyDown (KeyCode.Q)) {
 			Application.LoadLevel(Application.loadedLevel);
 		}
 
-		if (Input.GetKeyDown (KeyCode.Escape)) {
+		/*if (Input.GetKeyDown (KeyCode.Escape)) {
 			Application.Quit();
-		}
+		}*/
 
-		if (Input.GetKeyDown (KeyCode.B)) {
+		if (Input.GetKeyDown (KeyCode.Escape)) {
 			if (!isPause) metPause ();
 			else quitter();
 		}
 
-		if (isPause && Input.GetKeyDown (KeyCode.A)) {
+		if (isPause && Input.GetKeyDown (KeyCode.Space)) {
 			enlevePause();
 		}
 	}

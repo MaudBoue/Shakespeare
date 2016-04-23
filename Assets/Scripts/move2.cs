@@ -52,13 +52,9 @@ public class move2 : MonoBehaviour {
 		
 		movement = new Vector3(inputX * speed.x,rigid.velocity.y,speed.y * inputY - fakeForce);
 	
-		//pour recul fluide
-		if (fakeForce != 0) {
-			fakeForce = Mathf.Lerp(fakeForce,0,timeForce);
-		}
 
 		// lock
-		if (Input.GetKeyDown (KeyCode.A)) {
+		if (Input.GetKeyDown (KeyCode.Space)) {
 			if (joueurPresDaraignee) activeLock();
 			else lockDansLeVide();
 		}
@@ -73,7 +69,7 @@ public class move2 : MonoBehaviour {
 
 		//rotation
 		if (!Regarde) {
-			if (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.DownArrow)) {
+			if (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.DownArrow) || Input.GetAxis("Horizontal") >= 0.01f || Input.GetAxis("Vertical") >= 0.01f) {
 				rot = Quaternion.FromToRotation (new Vector3 (0, 0, 1), new Vector3 (rigid.velocity.x, 1, rigid.velocity.z)).eulerAngles.y;
 				Perso.rotation = Quaternion.Euler (0, rot, 0);
 			}
@@ -87,6 +83,10 @@ public class move2 : MonoBehaviour {
 	}
 	
 	void FixedUpdate(){
+		//pour recul fluide
+		if (fakeForce != 0) {
+			fakeForce = Mathf.Lerp(fakeForce,0,timeForce);
+		}
 		rigid.velocity = movement;	
 	}
 	

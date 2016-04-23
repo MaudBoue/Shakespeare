@@ -13,7 +13,7 @@ public class startManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if (Input.GetKeyDown(KeyCode.B)){
+		if (Input.GetKeyDown(KeyCode.Escape)){
 			if (startScreen){
 			Application.LoadLevel("mainLaby");
 			}
