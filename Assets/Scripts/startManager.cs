@@ -15,7 +15,7 @@ public class startManager : MonoBehaviour {
 	
 		if (Input.GetKeyDown(KeyCode.B)){
 			if (startScreen){
-			Application.LoadLevel("Testlabyrinthe13");
+			Application.LoadLevel("mainLaby");
 			}
 			else {
 			Application.LoadLevel("startScreen");
