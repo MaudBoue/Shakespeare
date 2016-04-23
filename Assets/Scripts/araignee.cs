@@ -9,7 +9,7 @@ public class araignee : MonoBehaviour {
 	public bool joueurEstDansZone;
 	private float jauge;
 	private float tempsAppear = 100;
-	private float coefMonteJauge = 0.8f;
+	private float coefMonteJauge = 0.6f;
 	private Transform jaugeSprite;
 
 	// pour confrontation
@@ -76,7 +76,7 @@ public class araignee : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 	
 		// Quand forme floue
 		if (!estApparu && !gameManagerGO.isPause) {
