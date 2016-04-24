@@ -23,9 +23,9 @@ public class gameManagerNew : MonoBehaviour
 			Application.Quit();
 		}
 
-		/*if (Input.GetKeyDown (KeyCode.Escape)) {
-			Application.Quit();
-		}*/
+		if (Input.GetKeyDown (KeyCode.A)) {
+			Application.LoadLevel(Application.loadedLevel);
+		}
 
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			if (!isPause) metPause ();

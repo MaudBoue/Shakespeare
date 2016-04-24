@@ -117,7 +117,7 @@ public class araignee : MonoBehaviour {
 			if (regarde && joueurEstDansZone ) {
 				jauge += coefMonteJauge2;
 				if (jauge >= lifeTime) aEuAraigne();
-				jaugeSprite.localScale = new Vector3 (jauge*6,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
+				jaugeSprite.localScale = new Vector3 (jauge*6/(lifeTime/100),jaugeSprite.localScale.y,jaugeSprite.localScale.z);
 				if (brilleRend.enabled == false) brilleRend.enabled=true;
 			}
 			else {
@@ -125,7 +125,7 @@ public class araignee : MonoBehaviour {
 			}
 			if (jauge > 0 && (!regarde || !joueurEstDansZone)) {
 			jauge -= coefMonteJauge2 / 2;
-			jaugeSprite.localScale = new Vector3 (jauge*6,jaugeSprite.localScale.y,jaugeSprite.localScale.z);
+				jaugeSprite.localScale = new Vector3 (jauge*6/(lifeTime/100),jaugeSprite.localScale.y,jaugeSprite.localScale.z);
 			}
 
 			// pour apparition / disparition ombres
@@ -173,6 +173,7 @@ public class araignee : MonoBehaviour {
 		anim.Play("araigneeVaincue");
 	}
 	
+	// pour destruction après la fin de l'animation de disparition de l'airaignee
 
 	private void destroyAraignee () {
 		zoneAraigneeAppear zone = GetComponentInChildren<zoneAraigneeAppear> ();
@@ -194,5 +195,22 @@ public class araignee : MonoBehaviour {
 		/*if (estApparu && patternO.enabled == false) {
 			ombresApparaissent();
 		}*/
+
+
+	// pour optimisation tout ce qui se passe en active/desactive lock etc
+
+	public void startRegard(){
+		regarde = true;
+	}
+
+	public void stopRegard(){
+		regarde = false;
+	}
+
+	void activeLock (){
+	}
+
+	void desactiveLock(){
+	}
 
     }

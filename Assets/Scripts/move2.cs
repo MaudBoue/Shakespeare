@@ -36,7 +36,10 @@ public class move2 : MonoBehaviour {
 	public AudioClip lockOn;
 	public AudioClip lockOff;
 	public AudioClip lockDansVide;
-	
+
+	// pour tout en lien avec araignee
+	public araignee currentAraignee;
+
 	// Use this for initialization
 	void Start () {
 		speed = speedLaby;
@@ -121,12 +124,14 @@ public class move2 : MonoBehaviour {
 	void activeLock () {
 		soundManagerGO.PlaySingleSound (lockOn,false);
 		Regarde = true;
+		//currentAraignee.startRegard ();
 		Lock.SetActive(true);
 	}
 
 	public void desactiveLock () {
 		Regarde = false;
 		Lock.SetActive(false);
+		//currentAraignee.stopRegard ();
 	}
 
 	void lockDansLeVide () {
@@ -138,6 +143,8 @@ public class move2 : MonoBehaviour {
 	// entre et sort de zone d'araignee 
 
 	public void dansZoneAraignee ( GameObject lockCurrentAraignee){
+		//currentAraignee = araigneeGO; -> araignee envoyé par fonction zoneAraigneeAppear
+		//Lock = currentAraignee.Lock;
 		Lock = lockCurrentAraignee;
 		joueurPresDaraignee = true;
 		speed = speedFight;
